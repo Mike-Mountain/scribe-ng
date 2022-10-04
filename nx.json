@@ -3,9 +3,6 @@
   "affected": {
     "defaultBase": "master"
   },
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  },
   "implicitDependencies": {
     "package.json": {
       "dependencies": "*",
@@ -15,23 +12,17 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "YjRiMGVkZTAtYTM1ZS00YWM0LTk5NGMtNGQ0MzU5YjllZjZifHJlYWQtd3JpdGU="
       }
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
   }
 }

@@ -1,0 +1,12 @@
+mat-checkbox.full-width-checkbox .mat-checkbox-layout {
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+mat-checkbox.full-width-checkbox .mat-checkbox-inner-container {
+  margin-left: 200px;
+}
+
+mat-checkbox.full-width-checkbox .mat-checkbox-label {
+  margin-right: auto;
+}

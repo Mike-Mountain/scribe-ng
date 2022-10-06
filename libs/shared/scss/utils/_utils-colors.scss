@@ -1,0 +1,25 @@
+@use '../theme/palettes/default/default-primary';
+
+// 1. Background Colours
+
+.light-background {
+  background-color: map-get(default-primary.$default-primary, contrast, 100);
+}
+
+.bg-color-primary {
+  background-color: map-get(default-primary.$default-primary, 500);
+}
+
+//2. Text Colours
+
+.text-color-primary {
+  color: map-get(default-primary.$default-primary, 500) !important;
+}
+
+.text-color-grey {
+  color: map-get(default-primary.$default-primary, contrast, 200);
+}
+
+.text-white {
+  color: white;
+}

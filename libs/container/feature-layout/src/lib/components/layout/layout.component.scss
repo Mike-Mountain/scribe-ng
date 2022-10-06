@@ -1,0 +1,96 @@
+.app-layout {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1.5rem 1fr 10rem 1.5rem;
+  grid-template-columns: 1.5rem 10rem 1fr 10rem 1.5rem;
+  grid-template-areas:
+  'top top top top top'
+  'left sidebar-left content sidebar-right right'
+  'sidebar-bottom sidebar-bottom sidebar-bottom sidebar-bottom sidebar-bottom'
+  'bottom bottom bottom bottom bottom';
+}
+
+.toolbar-top {
+  width: 100%;
+  height: 100%;
+  grid-area: top;
+  background: var(--menuBg);
+  border: 1px solid var(--containerBg);
+}
+
+.toolbar-left {
+  width: 100%;
+  height: 100%;
+  grid-area: left;
+  background: var(--menuBg);
+  border: 1px solid var(--containerBg);
+  border-top: none;
+  border-bottom: none;
+  writing-mode: vertical-rl;
+}
+
+.sidebar-left {
+  width: 100%;
+  height: 100%;
+  grid-area: sidebar-left;
+  background: var(--contentBg);
+  border: 1px solid var(--containerBg);
+  border-top: none;
+  border-bottom: none;
+}
+
+.toolbar-right {
+  width: 100%;
+  height: 100%;
+  grid-area: right;
+  background: var(--menuBg);
+  border: 1px solid var(--containerBg);
+  border-top: none;
+  border-bottom: none;
+  writing-mode: vertical-rl;
+}
+
+.sidebar-right {
+  width: 100%;
+  height: 100%;
+  grid-area: sidebar-right;
+  background: var(--contentBg);
+  border: 1px solid var(--containerBg);
+  border-top: none;
+  border-bottom: none;
+}
+
+.toolbar-bottom {
+  width: 100%;
+  height: 100%;
+  grid-area: bottom;
+  background: var(--menuBg);
+  border: 1px solid var(--containerBg);
+}
+
+.sidebar-bottom {
+  width: 100%;
+  height: 100%;
+  grid-area: sidebar-bottom;
+  background: var(--contentBg);
+  border: 1px solid var(--containerBg);
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  grid-area: content;
+  background: var(--contentBg);
+}
+
+.toolbar {
+  width: 100%;
+  height: 2rem;
+  background: var(--menuBg);
+  border-bottom: 1px solid var(--containerBg);
+}
+
+.content-tabs {
+  height: 3.5rem;
+}

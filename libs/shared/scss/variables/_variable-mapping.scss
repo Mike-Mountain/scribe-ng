@@ -1,0 +1,23 @@
+@use '../theme/palettes/default/default-primary';
+@use '../theme/palettes/default/default-accent';
+@use '../theme/palettes/default/default-warn';
+
+$primary: map-get(default-primary.$default-primary, 500);
+$primaryText: map-get(default-primary.$default-primary, contrast, 50);
+$accent: map-get(default-accent.$default-accent, 500);
+$warn: map-get(default-warn.$default-warn, 500);
+
+:root {
+  --primary: #{$primary};
+  --accent: #{$accent};
+  --warn: #{$warn};
+  --primaryText: #{$primaryText};
+  --inputText: #646464;
+  --contentBg: #262b33;
+  --menuBg: #2f343f;
+  --containerBg: #383f4c;
+}
+
+body {
+  color: var(--primary)
+}

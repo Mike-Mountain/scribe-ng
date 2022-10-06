@@ -1,0 +1,38 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+@use 'palettes/default/default-primary';
+@use 'palettes/default/default-accent';
+@use 'palettes/default/default-warn';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme
+// Default palettes:
+$default-primary: mat.define-palette(default-primary.$default-primary);
+$default-accent: mat.define-palette(default-accent.$default-accent);
+// Other palettes:
+
+// The warn palette is optional (defaults to red).
+$shared-warn: mat.define-palette(default-warn.$default-warn);
+
+// Create the theme object for each theme:
+// Default theme:
+$default-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $default-primary,
+      accent: $default-accent,
+      warn: $shared-warn,
+    ),
+  )
+);
+// Other themes:
+
+// Include theme styles for core and each component used in your app.
+.default {
+  @include mat.all-component-themes($default-theme);
+}

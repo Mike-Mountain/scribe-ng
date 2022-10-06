@@ -1,0 +1,15 @@
+.default .mat-expansion-panel-header {
+  height: 80px !important;
+}
+
+mat-expansion-panel-header .mat-expansion-indicator::after {
+  content: '+';
+  font-size: 28px;
+  border: 0;
+  transform: none;
+}
+
+.mat-expansion-panel-header.mat-expanded .mat-expansion-indicator::after {
+  content: '-';
+  font-size: 35px;
+}

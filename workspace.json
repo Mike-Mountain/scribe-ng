@@ -1,5 +1,9 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "container": "apps/container",
+    "container-e2e": "apps/e2e/container-e2e",
+    "container-feature-layout": "libs/container/feature-layout"
+  },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

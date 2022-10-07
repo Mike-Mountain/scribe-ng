@@ -1,22 +1,24 @@
-<div class="app-layout">
+<div class="app-layout" *ngIf="layout$ | async as layout">
   <div class="toolbar-top">Toolbar Top</div>
   <div class="toolbar-left">Toolbar Left</div>
-  <aside class="sidebar-left" aria-label="sidebar-left">
+  <aside class="content-left" aria-label="content-left" *ngIf="layout.contentLeft">
     <div class="toolbar"></div>
     Sidebar Left
   </aside>
-  <main class="content">
+  <main class="content-main">
     <div class="content-tabs toolbar">Content Tabs</div>
     Content
   </main>
-  <aside class="sidebar-right" aria-label="sidebar-right">
+  <aside class="content-right" aria-label="content-right" *ngIf="layout.contentRight">
     <div class="toolbar"></div>
     Sidebar Right
   </aside>
   <div class="toolbar-right">Toolbar Right</div>
-  <aside class="sidebar-bottom" aria-label="sidebar-bottom">
+  <aside class="content-bottom" aria-label="content-bottom" *ngIf="layout.contentBottom">
     <div class="toolbar"></div>
     Sidebar Bottom
   </aside>
-  <div class="toolbar-bottom">Toolbar Bottom</div>
+  <div class="toolbar-bottom">
+    Toolbar Bottom
+  </div>
 </div>

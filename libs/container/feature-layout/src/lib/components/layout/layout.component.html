@@ -1,4 +1,4 @@
-<div class="app-layout" *ngIf="layout$ | async as layout">
+<div class="app-layout" *ngIf="layout$ | async as layout" ngScribeLayout>
   <div class="toolbar-top">Toolbar Top</div>
   <div class="toolbar-left">Toolbar Left</div>
   <aside class="content-left" aria-label="content-left" *ngIf="layout.contentLeft">

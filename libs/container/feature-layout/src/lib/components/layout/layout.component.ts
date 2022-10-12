@@ -33,29 +33,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    // this.layoutQuery.select().pipe(takeUntil(this.destroyed$)).subscribe((layout: Layout) => {
-    //   this.layoutValue = layout;
-    //   if (this.layout) {
-    //     const el = this.layout.nativeElement;
-    //     if (layout.contentBottom) {
-    //       this.renderer.setStyle(el, 'grid-template-rows', '1.5rem 1fr 10rem 1.5rem')
-    //     } else {
-    //       this.renderer.setStyle(el, 'grid-template-rows', '1.5rem 1fr 0 1.5rem')
-    //     }
-    //
-    //     if (layout.contentLeft) {
-    //       this.renderer.setStyle(el, 'grid-template-columns', ' 1.5rem 10rem 1fr 0 1.5rem')
-    //     } else {
-    //       this.renderer.setStyle(el, 'grid-template-columns', ' 1.5rem 0 1fr 0 1.5rem')
-    //     }
-    //
-    //     if (layout.contentRight) {
-    //       this.renderer.setStyle(el, 'grid-template-columns', ' 1.5rem 0 1fr 10rem 1.5rem')
-    //     } else {
-    //       this.renderer.setStyle(el, 'grid-template-columns', ' 1.5rem 0 1fr 0 1.5rem')
-    //     }
-    //   }
-    // })
+
   }
 
   ngOnDestroy() {

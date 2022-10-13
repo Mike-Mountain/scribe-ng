@@ -1,24 +1,48 @@
-<div class="app-layout" *ngIf="layout$ | async as layout" ngScribeLayout>
-  <div class="toolbar-top">Toolbar Top</div>
-  <div class="toolbar-left">Toolbar Left</div>
-  <aside class="content-left" aria-label="content-left" *ngIf="layout.contentLeft">
-    <div class="toolbar"></div>
-    Sidebar Left
-  </aside>
-  <main class="content-main">
-    <div class="content-tabs toolbar">Content Tabs</div>
-    Content
-  </main>
-  <aside class="content-right" aria-label="content-right" *ngIf="layout.contentRight">
-    <div class="toolbar"></div>
-    Sidebar Right
-  </aside>
-  <div class="toolbar-right">Toolbar Right</div>
-  <aside class="content-bottom" aria-label="content-bottom" *ngIf="layout.contentBottom">
-    <div class="toolbar"></div>
-    Sidebar Bottom
-  </aside>
-  <div class="toolbar-bottom">
-    Toolbar Bottom
-  </div>
-</div>
+<ng-container *ngIf="scribeData$ | async as data">
+  <ng-container *ngIf="layout$ | async as layout">
+    <div class="app-layout" ngScribeLayout>
+      <div class="toolbar-top">Toolbar Top</div>
+      <div class="toolbar-left">
+        <button class="sidebar-button" [disabled]="!data.manuscript" (click)="togglePanel('contentLeft')" >
+          <span id="leftButton" class="toolbar-button side-toolbar-button ml-4" [class.disabled]="!data.manuscript">
+            <mat-icon class="icon-sm" color="accent">home</mat-icon>
+            Manuscript
+          </span>
+        </button>
+      </div>
+      <aside class="content-left" aria-label="content-left" *ngIf="layout.contentLeft === 'open'">
+        <div class="toolbar"></div>
+        Sidebar Left
+      </aside>
+      <main class="content-main">
+        <div class="content-tabs toolbar" *ngIf="data.manuscript">Content Tabs</div>
+        <ng-container *ngIf="!data?.manuscript">
+          <div class="w-100 h-100 flex-center flex-column">
+            <h1>Please create a manuscript to get started</h1>
+            <button mat-raised-button color="primary">Create Manuscript</button>
+          </div>
+        </ng-container>
+      </main>
+      <aside class="content-right" aria-label="content-right" *ngIf="layout.contentRight === 'open'">
+        <div class="toolbar"></div>
+        Sidebar Right
+      </aside>
+      <div class="toolbar-right">Toolbar Right</div>
+      <aside class="content-bottom" aria-label="content-bottom" *ngIf="layout.contentBottom === 'open'">
+        <div class="toolbar"></div>
+        Sidebar Bottom
+      </aside>
+      <div class="toolbar-bottom">
+        <button
+          id="bottomButton"
+          class="toolbar-button bottom-toolbar-button ml-4"
+          (click)="togglePanel('contentBottom')"
+          [disabled]="!data.timeline"
+        >
+          <mat-icon class="icon-sm" color="accent">home</mat-icon>
+          Timeline
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

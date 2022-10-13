@@ -1,14 +1,14 @@
 export interface Layout {
-  contentBottom: boolean;
-  contentLeft: boolean;
-  contentRight: boolean;
+  contentBottom: string;
+  contentLeft: string;
+  contentRight: string;
 }
 
 export function createLayout(params: Partial<Layout>): Layout {
   const layout: Layout = {
-    contentRight: params.contentRight || false,
-    contentLeft: params.contentLeft || false,
-    contentBottom: params.contentBottom || false
+    contentRight: params.contentRight || 'closed',
+    contentLeft: params.contentLeft || 'closed',
+    contentBottom: params.contentBottom || 'closed'
   }
   return layout;
 }

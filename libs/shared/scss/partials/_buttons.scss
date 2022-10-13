@@ -1,0 +1,57 @@
+.toolbar-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: none;
+  color: white;
+  border: none;
+  transition: all .1s ease;
+
+  &:hover {
+    background: var(--primary);
+  }
+
+  &:disabled {
+    &:hover {
+      background: none;
+      cursor: default;
+    }
+  }
+}
+
+.sidebar-button {
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.side-toolbar-button {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  min-height: 6.4rem;
+}
+
+.bottom-toolbar-button {
+  height: 100%;
+  width: max-content;
+}
+
+.toolbar-button.selected {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9);
+  background: var(--contentBg);
+}
+
+.toolbar-button.disabled {
+  &:hover {
+    background: none;
+    cursor: default;
+  }
+}
+
+.icon-sm {
+  transform: scale(.75);
+}

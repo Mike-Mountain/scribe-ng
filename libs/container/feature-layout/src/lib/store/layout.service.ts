@@ -8,9 +8,14 @@ export class LayoutService {
   constructor(private layoutStore: LayoutStore) {
   }
 
-  togglePanel(panel: string, isOpen: boolean) {
+  togglePanel(panel: string) {
     const state = JSON.parse(JSON.stringify(this.layoutStore.getValue()));
-    state[panel as keyof Layout] = isOpen;
+    if (state[panel as keyof Layout] === 'open') {
+      state[panel as keyof Layout] = 'closed'
+    } else {
+      state[panel as keyof Layout] = 'open'
+    }
+    console.log(state);
     this.layoutStore.update(state);
   }
 

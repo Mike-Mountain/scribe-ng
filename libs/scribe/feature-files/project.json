@@ -1,15 +1,15 @@
 {
-  "name": "feature-layout",
+  "name": "scribe-feature-files",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/container/feature-layout/src",
+  "sourceRoot": "libs/scribe/feature-files/src",
   "prefix": "ng-scribe",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/container/feature-layout"],
+      "outputs": ["coverage/libs/scribe/feature-files"],
       "options": {
-        "jestConfig": "libs/container/feature-layout/jest.config.ts",
+        "jestConfig": "libs/scribe/feature-files/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -17,11 +17,11 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/container/feature-layout/**/*.ts",
-          "libs/container/feature-layout/**/*.html"
+          "libs/scribe/feature-files/**/*.ts",
+          "libs/scribe/feature-files/**/*.html"
         ]
       }
     }
   },
-  "tags": ["scope:container", "type:feature"]
+  "tags": []
 }

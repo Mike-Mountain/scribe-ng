@@ -2,12 +2,28 @@
   <ng-container *ngFor="let chapter of chapters">
     <button class="chapter" (click)="toggleChapter(chapter)">
       <div class="chapter-details">
-        <mat-icon class="icon-md">
-          <ng-container *ngIf="!chapter.isExpanded">chevron_right</ng-container>
-          <ng-container *ngIf="chapter.isExpanded">expand_more</ng-container>
-        </mat-icon>
-        <mat-icon color="primary" class="icon-md">folder</mat-icon>
-        <h3 class="m-0">{{chapter.title}}</h3>
+        <div class="flex-start">
+          <mat-icon class="icon-md">
+            <ng-container *ngIf="!chapter.isExpanded">chevron_right</ng-container>
+            <ng-container *ngIf="chapter.isExpanded">expand_more</ng-container>
+          </mat-icon>
+          <mat-icon color="primary" class="icon-md">folder</mat-icon>
+          <h3 class="m-0">{{chapter.title}}</h3>
+        </div>
+        <div class="flex-end">
+          <button
+            class="icon-button-sm flex-center"
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            (click)="$event.stopImmediatePropagation()"
+          >
+            <mat-icon class="icon-sm">more_vert</mat-icon>
+          </button>
+          <mat-menu #menu xPosition="before">
+            <button mat-menu-item>Edit chapter details</button>
+            <button mat-menu-item (click)="createScene(chapter)">New Scene</button>
+          </mat-menu>
+        </div>
       </div>
       <ng-container *ngIf="chapter.isExpanded">
         <ng-container *ngFor="let scene of chapter.scenes">

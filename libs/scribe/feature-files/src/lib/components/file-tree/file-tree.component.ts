@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Chapter, Scene, ScribeQuery, Tab, TabsService} from "@ng-scribe/scribe/data-access";
+import {Chapter, Manuscript, Scene, ScribeQuery, ScribeService, Tab, TabsService} from "@ng-scribe/scribe/data-access";
 import {map, Observable} from "rxjs";
 import {Router} from "@angular/router";
 
@@ -11,15 +11,17 @@ import {Router} from "@angular/router";
 export class FileTreeComponent implements OnInit {
 
   public files$: Observable<Chapter[]> | undefined;
+  public manuscript: Manuscript | undefined;
 
   constructor(private scribeQuery: ScribeQuery,
+              private scribeService: ScribeService,
               private tabsService: TabsService,
               private router: Router) {}
 
   ngOnInit(): void {
     this.files$ = this.scribeQuery.select('manuscript').pipe(
       map(manuscript => {
-        console.log(manuscript);
+        this.manuscript = manuscript;
         return manuscript?.chapters || []
       })
     )
@@ -40,5 +42,20 @@ export class FileTreeComponent implements OnInit {
     this.tabsService.setTab(tab).subscribe(() => {
       this.router.navigate([`manuscript/${tab.path}`])
     });
+  }
+
+  createScene(chapter: Chapter) {
+    const scene: Scene = {
+      title: 'New Scene',
+      notes: [],
+      content: ''
+    };
+    if (!chapter.scenes.find(item => item.title === scene.title)) {
+      chapter.scenes.push(scene);
+      console.log(this.manuscript?.chapters);
+      this.scribeService.update('manuscript', this.manuscript);
+    } else {
+      console.warn('SCENE NAME MUST BE UNIQUE')
+    }
   }
 }

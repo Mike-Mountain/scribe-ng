@@ -1,14 +1,21 @@
 .chapter {
+  width: 100%;
   border: none;
   background: transparent;
   color: white;
+  padding: 0;
 }
 
 .chapter-details, .scene {
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+}
+
+.chapter-details {
+  justify-content: space-between;
 }
 
 .scene {

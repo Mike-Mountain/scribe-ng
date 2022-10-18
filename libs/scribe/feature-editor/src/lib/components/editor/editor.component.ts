@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./editor.component.scss'],
 })
 export class EditorComponent implements OnInit {
-  
+
   constructor() {}
 
   ngOnInit(): void {}

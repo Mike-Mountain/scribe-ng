@@ -21,6 +21,11 @@
               <mat-icon class="icon-sm">remove</mat-icon>
             </button>
           </div>
+          <mat-menu #menu>
+            <button mat-menu-item>Manuscript details</button>
+            <button mat-menu-item (click)="createChapter()">New Chapter</button>
+            <button mat-menu-item (click)="createScene()">New Scene</button>
+          </mat-menu>
         </div>
         <ng-scribe-file-tree></ng-scribe-file-tree>
       </aside>
@@ -58,9 +63,3 @@
     </div>
   </ng-container>
 </ng-container>
-
-<mat-menu #menu>
-  <button mat-menu-item>Manuscript details</button>
-  <button mat-menu-item>New Chapter</button>
-  <button mat-menu-item>New Scene</button>
-</mat-menu>

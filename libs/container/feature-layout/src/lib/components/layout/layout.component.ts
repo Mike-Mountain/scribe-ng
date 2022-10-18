@@ -56,4 +56,12 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   togglePanel(panel: string) {
     this.layoutService.togglePanel(panel);
   }
+
+  createChapter() {
+
+  }
+
+  createScene() {
+
+  }
 }

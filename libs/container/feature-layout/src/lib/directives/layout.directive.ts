@@ -1,6 +1,6 @@
 import {Directive, ElementRef, OnInit, Renderer2} from '@angular/core';
-import {LayoutQuery} from "../store/layout.query";
-import {Layout} from "../store/layout.model";
+import {LayoutQuery} from "../../../../../shared/data-access/src/lib/store/layout/layout.query";
+import {Layout} from "../../../../../shared/data-access/src/lib/store/layout/layout.model";
 
 @Directive({
   selector: '[ngScribeLayout]'
@@ -58,16 +58,22 @@ export class LayoutDirective implements OnInit {
     })
   }
 
-  getPanel(newLayout: Layout, oldLayout: Layout | undefined): string | undefined {
+  getPanel(newLayout: Layout, oldLayout: Layout | undefined): string {
+    let match: any;
     if (oldLayout) {
-      let match: any;
       Object.keys(oldLayout).forEach(key => {
         if (oldLayout[key as keyof Layout] !== newLayout[key as keyof Layout]) {
           match = key;
         }
       });
-      return match;
-    } else return;
+    } else {
+      Object.keys(newLayout).forEach(key => {
+        if (newLayout[key as keyof Layout] === 'open') {
+          match = key
+        }
+      })
+    }
+    return match;
   }
 
 

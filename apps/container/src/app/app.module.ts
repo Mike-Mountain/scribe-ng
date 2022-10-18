@@ -7,6 +7,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import {environment} from "../environments/environment";
+import {FeatureLayoutModule} from "@ng-scribe/container";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +18,8 @@ import {environment} from "../environments/environment";
     AppRoutingModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
+    FeatureLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

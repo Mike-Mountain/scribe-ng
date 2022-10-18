@@ -1,5 +1,5 @@
 {
-  "name": "scribe-data-access",
+  "name": "data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/scribe/data-access/src",

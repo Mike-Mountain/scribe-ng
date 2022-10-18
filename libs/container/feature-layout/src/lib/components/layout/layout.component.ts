@@ -1,19 +1,14 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
   OnDestroy,
   OnInit,
-  Renderer2,
-  ViewChild
 } from '@angular/core';
-import {LayoutQuery} from "../../store/layout.query";
-import {Observable, ReplaySubject, takeUntil, tap} from "rxjs";
-import {Layout} from "../../store/layout.model";
-import {LayoutService} from "../../store/layout.service";
-import {ScribeQuery} from "../../../../../../scribe/data-access/src/lib/stores/scribe/scribe.query";
-import {ScribeService} from "../../../../../../scribe/data-access/src/lib/stores/scribe/scribe.service";
-import {ScribeState} from "../../../../../../scribe/data-access/src/lib/stores/scribe/scribe.model";
+import {LayoutQuery} from "../../../../../../shared/data-access/src/lib/store/layout/layout.query";
+import {Observable, ReplaySubject, tap} from "rxjs";
+import {Layout} from "../../../../../../shared/data-access/src/lib/store/layout/layout.model";
+import {LayoutService} from "../../../../../../shared/data-access/src/lib/store/layout/layout.service";
+import {ScribeQuery, ScribeService, ScribeState} from "@ng-scribe/scribe/data-access";
 
 @Component({
   selector: 'ng-scribe-layout',
@@ -40,7 +35,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       tap(data => {
         // Open the manuscript by default if one exists
         if (data.manuscript) {
-          this.layoutService.togglePanel('contentRight');
+          this.layoutService.togglePanel('contentLeft');
         }
       })
     );

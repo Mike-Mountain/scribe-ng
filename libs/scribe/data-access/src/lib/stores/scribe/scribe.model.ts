@@ -14,13 +14,14 @@ export class ScribeState {
 
 export interface Manuscript {
   title: string;
-  authors: string[];
+  author: string;
   synopsis: string;
   chapters: Chapter[];
 }
 
 export interface Chapter {
   title: string;
+  isExpanded: boolean;
   scenes: Scene[];
   notes: string[];
 }

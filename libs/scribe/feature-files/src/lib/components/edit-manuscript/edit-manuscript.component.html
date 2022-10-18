@@ -1,0 +1,29 @@
+<section class="manuscript-details">
+  <div class="page">
+    <h1 class="text-center">
+      <ng-container *ngIf="isCreating; else editing">Create New Manuscript</ng-container>
+      <ng-template #editing>Edit Manuscript</ng-template>
+    </h1>
+    <ng-container *ngIf="manuscriptForm$ | async as formGroup">
+      <form *ngIf="manuscriptForm$" [formGroup]="formGroup" class="manuscript-form">
+        <mat-form-field appearance="outline" color="accent" class="w-75">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" formControlName="title">
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent" class="w-75">
+          <mat-label>Synopsis</mat-label>
+          <textarea matInput formControlName="synopsis" rows="8"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent" class="w-75">
+          <mat-label>Author</mat-label>
+          <input matInput formControlName="author">
+        </mat-form-field>
+
+        <div class="w-80 flex-center flex-column">
+          <button mat-raised-button color="primary" class="w-80 my-3" (click)="createManuscript(formGroup)">Create</button>
+          <button mat-raised-button color="warn" class="w-40" routerLink="/">Cancel</button>
+        </div>
+      </form>
+    </ng-container>
+  </div>
+</section>

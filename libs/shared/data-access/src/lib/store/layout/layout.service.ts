@@ -15,7 +15,6 @@ export class LayoutService {
     } else {
       state[panel as keyof Layout] = 'open'
     }
-    console.log(state);
     this.layoutStore.update(state);
   }
 

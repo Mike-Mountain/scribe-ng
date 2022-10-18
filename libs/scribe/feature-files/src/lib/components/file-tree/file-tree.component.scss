@@ -1,0 +1,17 @@
+.chapter {
+  border: none;
+  background: transparent;
+  color: white;
+}
+
+.chapter-details, .scene {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.scene {
+  margin: .25rem 0 .25rem 2.2rem;
+  align-items: flex-end;
+}

@@ -3,26 +3,33 @@
     <div class="app-layout" ngScribeLayout>
       <div class="toolbar-top">Toolbar Top</div>
       <div class="toolbar-left">
-        <button class="sidebar-button" [disabled]="!data.manuscript" (click)="togglePanel('contentLeft')" >
+        <button class="sidebar-button" [disabled]="!data.manuscript" (click)="togglePanel('contentLeft')">
           <span id="leftButton" class="toolbar-button side-toolbar-button ml-4" [class.disabled]="!data.manuscript">
-            <mat-icon class="icon-sm" color="accent">home</mat-icon>
+            <mat-icon class="icon-md" color="primary">home</mat-icon>
             Manuscript
           </span>
         </button>
       </div>
       <aside class="content-left" aria-label="content-left" *ngIf="layout.contentLeft === 'open'">
-        <div class="toolbar"></div>
-        Sidebar Left
-      </aside>
-      <main class="content-main">
-        <div class="content-tabs toolbar" *ngIf="data.manuscript">Content Tabs</div>
-        <ng-container *ngIf="!data?.manuscript">
-          <div class="w-100 h-100 flex-center flex-column">
-            <h1>Please create a manuscript to get started</h1>
-            <button mat-raised-button color="primary">Create Manuscript</button>
+        <div class="toolbar flex-between pl-2">
+          <p class="m-0">Manuscript</p>
+          <div class="actions">
+            <button class="icon-button-sm flex-center" mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon class="icon-sm">more_vert</mat-icon>
+            </button>
+            <button class="icon-button-sm flex-center" mat-icon-button (click)="togglePanel('contentLeft')">
+              <mat-icon class="icon-sm">remove</mat-icon>
+            </button>
           </div>
-        </ng-container>
-      </main>
+        </div>
+        <ng-scribe-file-tree></ng-scribe-file-tree>
+      </aside>
+      <div class="content-main">
+        <div class="content-tabs toolbar" *ngIf="data.manuscript">Content Tabs</div>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </div>
       <aside class="content-right" aria-label="content-right" *ngIf="layout.contentRight === 'open'">
         <div class="toolbar"></div>
         Sidebar Right
@@ -39,10 +46,16 @@
           (click)="togglePanel('contentBottom')"
           [disabled]="!data.timeline"
         >
-          <mat-icon class="icon-sm" color="accent">home</mat-icon>
+          <mat-icon class="icon-md" color="primary">home</mat-icon>
           Timeline
         </button>
       </div>
     </div>
   </ng-container>
 </ng-container>
+
+<mat-menu #menu>
+  <button mat-menu-item>Manuscript details</button>
+  <button mat-menu-item>New Chapter</button>
+  <button mat-menu-item>New Scene</button>
+</mat-menu>

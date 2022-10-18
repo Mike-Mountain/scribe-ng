@@ -21,7 +21,7 @@ $shared-warn: mat.define-palette(default-warn.$default-warn);
 
 // Create the theme object for each theme:
 // Default theme:
-$default-theme: mat.define-light-theme(
+$default-theme: mat.define-dark-theme(
   (
     color: (
       primary: $default-primary,

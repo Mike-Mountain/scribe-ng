@@ -12,12 +12,17 @@ $warn: map-get(default-warn.$default-warn, 500);
   --accent: #{$accent};
   --warn: #{$warn};
   --primaryText: #{$primaryText};
-  --inputText: #646464;
+  --text: #cecece;
+  --mutedText: #646464;
   --contentBg: #262b33;
   --menuBg: #2f343f;
   --containerBg: #383f4c;
 }
 
 body {
-  color: var(--primary)
+  color: var(--text)
+}
+
+.default .mat-menu-panel {
+  background: var(--containerBg);
 }

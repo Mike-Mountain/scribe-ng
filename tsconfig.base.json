@@ -22,7 +22,8 @@
       "@ng-scribe/scribe/data-access": ["libs/scribe/data-access/src/index.ts"],
       "@ng-scribe/scribe/feature-files": [
         "libs/scribe/feature-files/src/index.ts"
-      ]
+      ],
+      "@ng-scribe/shared/data-access": ["libs/shared/data-access/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

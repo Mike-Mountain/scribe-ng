@@ -3,9 +3,10 @@
   "projects": {
     "container": "apps/container",
     "container-e2e": "apps/e2e/container-e2e",
-    "feature-layout": "libs/container/feature-layout",
     "data-access": "libs/scribe/data-access",
-    "feature-files": "libs/scribe/feature-files"
+    "feature-files": "libs/scribe/feature-files",
+    "feature-layout": "libs/container/feature-layout",
+    "shared-data-access": "libs/shared/data-access"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

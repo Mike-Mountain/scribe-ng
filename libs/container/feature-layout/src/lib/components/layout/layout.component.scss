@@ -94,3 +94,11 @@
 .content-tabs {
   height: 3.5rem;
 }
+
+.actions {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid var(--containerBg)
+}

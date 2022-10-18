@@ -53,5 +53,19 @@
 }
 
 .icon-sm {
+  transform: scale(.5);
+}
+
+button.icon-button-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-md {
   transform: scale(.75);
+}
+
+button.icon-button-md {
+  width: 30px;
+  height: 30px;
 }

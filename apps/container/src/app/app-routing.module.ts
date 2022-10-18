@@ -1,12 +1,26 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {LayoutComponent} from "@ng-scribe/container";
+import {LandingComponent} from "@ng-scribe/container";
+import {EditManuscriptComponent} from "@ng-scribe/scribe/feature-files";
 
 const routes: Routes = [
   {
-    path: '',
-    component: LayoutComponent,
+    path: 'landing',
+    component: LandingComponent
   },
+  {
+    path: 'edit-manuscript',
+    component: EditManuscriptComponent
+  },
+  {
+    path: 'manuscript/:chapter/:scene',
+    component: LandingComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/landing'
+  }
 ]
 
 @NgModule({

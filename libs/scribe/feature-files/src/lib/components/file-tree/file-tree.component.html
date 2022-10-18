@@ -1,0 +1,22 @@
+<ng-container *ngIf="files$ | async as chapters">
+  <ng-container *ngFor="let chapter of chapters">
+    <button class="chapter" (click)="toggleChapter(chapter)">
+      <div class="chapter-details">
+        <mat-icon class="icon-md">
+          <ng-container *ngIf="!chapter.isExpanded">chevron_right</ng-container>
+          <ng-container *ngIf="chapter.isExpanded">expand_more</ng-container>
+        </mat-icon>
+        <mat-icon color="primary" class="icon-md">folder</mat-icon>
+        <h3 class="m-0">{{chapter.title}}</h3>
+      </div>
+      <ng-container *ngIf="chapter.isExpanded">
+        <ng-container *ngFor="let scene of chapter.scenes">
+          <a class="scene" (click)="routeToScene($event)">
+            <mat-icon class="icon-md" color="accent">insert_drive_file</mat-icon>
+            <h5 class="m-0">{{scene.title}}</h5>
+          </a>
+        </ng-container>
+      </ng-container>
+    </button>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,8 @@
+<ng-container *ngIf="scribeData | async as data">
+  <div class="w-100 h-100 flex-center flex-column">
+    <ng-container *ngIf="!data?.manuscript">
+      <h1>Please create a manuscript to get started</h1>
+      <a mat-raised-button color="primary" (click)="createManuscript()">Create Manuscript</a>
+    </ng-container>
+  </div>
+</ng-container>

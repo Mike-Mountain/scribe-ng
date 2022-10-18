@@ -1,5 +1,5 @@
 {
-  "name": "scribe-feature-files",
+  "name": "feature-files",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/scribe/feature-files/src",

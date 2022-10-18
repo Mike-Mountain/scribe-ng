@@ -11,7 +11,7 @@
       </div>
       <ng-container *ngIf="chapter.isExpanded">
         <ng-container *ngFor="let scene of chapter.scenes">
-          <a class="scene" (click)="routeToScene($event)">
+          <a class="scene" (click)="routeToScene($event, scene, chapter)">
             <mat-icon class="icon-md" color="accent">insert_drive_file</mat-icon>
             <h5 class="m-0">{{scene.title}}</h5>
           </a>

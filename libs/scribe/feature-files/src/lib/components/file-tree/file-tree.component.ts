@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Chapter, Scene, ScribeQuery} from "@ng-scribe/scribe/data-access";
+import {Chapter, Scene, ScribeQuery, Tab, TabsService} from "@ng-scribe/scribe/data-access";
 import {map, Observable} from "rxjs";
 import {Router} from "@angular/router";
 
@@ -13,6 +13,7 @@ export class FileTreeComponent implements OnInit {
   public files$: Observable<Chapter[]> | undefined;
 
   constructor(private scribeQuery: ScribeQuery,
+              private tabsService: TabsService,
               private router: Router) {}
 
   ngOnInit(): void {
@@ -28,8 +29,16 @@ export class FileTreeComponent implements OnInit {
     chapter.isExpanded = !chapter.isExpanded;
   }
 
-  routeToScene(event: MouseEvent) {
+  routeToScene(event: MouseEvent, scene: Scene, chapter: Chapter) {
     event.stopImmediatePropagation();
-    this.router.navigate(['/'])
+    const tab: Tab = {
+      isActive: true,
+      title: `${chapter.title} - ${scene.title}`,
+      icon: 'insert_drive_file',
+      path: `${chapter.title.replace(' ', '-')}/${scene.title.replace(' ', '-')}`
+    }
+    this.tabsService.setTab(tab).subscribe(() => {
+      this.router.navigate([`manuscript/${tab.path}`])
+    });
   }
 }

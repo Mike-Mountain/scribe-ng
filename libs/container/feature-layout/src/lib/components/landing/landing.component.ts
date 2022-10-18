@@ -14,13 +14,7 @@ export class LandingComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
-    this.scribeData = this.scribeQuery.select().pipe(
-      tap(data => {
-        if (data.manuscript) {
-          this.router.navigate(['/manuscript/chapter-one/scene-one'])
-        }
-      })
-    );
+    this.scribeData = this.scribeQuery.select();
   }
 
   createManuscript() {

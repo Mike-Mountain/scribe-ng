@@ -25,7 +25,12 @@
         <ng-scribe-file-tree></ng-scribe-file-tree>
       </aside>
       <div class="content-main">
-        <div class="content-tabs toolbar" *ngIf="data.manuscript">Content Tabs</div>
+        <ng-container *ngIf="tabs$ | async as tabs">
+          <ng-scribe-tabs
+            *ngIf="tabs.length > 0"
+            [tabs]="tabs"
+          ></ng-scribe-tabs>
+        </ng-container>
         <main>
           <router-outlet></router-outlet>
         </main>

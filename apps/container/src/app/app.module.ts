@@ -9,6 +9,7 @@ import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import {environment} from "../environments/environment";
 import {FeatureLayoutModule} from "@ng-scribe/container";
 import {ReactiveFormsModule} from "@angular/forms";
+import {QuillModule} from "ngx-quill";
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
     FeatureLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

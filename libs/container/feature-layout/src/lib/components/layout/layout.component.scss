@@ -15,16 +15,16 @@
   width: 100%;
   height: 100%;
   grid-area: top;
-  background: var(--menuBg);
-  border: 1px solid var(--containerBg);
+  background: var(--containerBg);
+  border: 1px solid var(--border);
 }
 
 .toolbar-left {
   width: 100%;
   height: 100%;
   grid-area: left;
-  background: var(--menuBg);
-  border: 1px solid var(--containerBg);
+  background: var(--containerBg);
+  border: 1px solid var(--border);
   border-top: none;
   border-bottom: none;
   writing-mode: vertical-rl;
@@ -35,7 +35,7 @@
   height: 100%;
   grid-area: content-left;
   background: var(--contentBg);
-  border: 1px solid var(--containerBg);
+  border: 1px solid var(--border);
   border-top: none;
   border-bottom: none;
 }
@@ -44,8 +44,8 @@
   width: 100%;
   height: 100%;
   grid-area: right;
-  background: var(--menuBg);
-  border: 1px solid var(--containerBg);
+  background: var(--containerBg);
+  border: 1px solid var(--border);
   border-top: none;
   border-bottom: none;
   writing-mode: vertical-rl;
@@ -56,7 +56,7 @@
   height: 100%;
   grid-area: content-right;
   background: var(--contentBg);
-  border: 1px solid var(--containerBg);
+  border: 1px solid var(--border);
   border-top: none;
   border-bottom: none;
 }
@@ -65,8 +65,8 @@
   width: 100%;
   height: 100%;
   grid-area: bottom;
-  background: var(--menuBg);
-  border: 1px solid var(--containerBg);
+  background: var(--containerBg);
+  border: 1px solid var(--border);
 }
 
 .content-bottom {
@@ -74,7 +74,7 @@
   height: 100%;
   grid-area: content-bottom;
   background: var(--contentBg);
-  border: 1px solid var(--containerBg);
+  border: 1px solid var(--border);
 }
 
 .content-main {
@@ -87,8 +87,8 @@
 .toolbar {
   width: 100%;
   height: 2rem;
-  background: var(--menuBg);
-  border-bottom: 1px solid var(--containerBg);
+  background: var(--containerBg);
+  border-bottom: 1px solid var(--border);
 }
 
 .content-tabs {
@@ -100,5 +100,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid var(--containerBg)
+  border-left: 1px solid var(--border)
 }

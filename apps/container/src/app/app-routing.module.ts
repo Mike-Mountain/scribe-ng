@@ -2,6 +2,8 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {LandingComponent} from "@ng-scribe/container";
 import {EditManuscriptComponent} from "@ng-scribe/scribe/feature-files";
+// @ts-ignore
+import {EditorComponent} from "@ng-scribe/scribe/feature-editor";
 
 const routes: Routes = [
   {
@@ -14,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'manuscript/:chapter/:scene',
-    component: LandingComponent
+    component: EditorComponent
   },
   {
     path: '',

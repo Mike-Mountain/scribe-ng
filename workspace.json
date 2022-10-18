@@ -4,6 +4,7 @@
     "container": "apps/container",
     "container-e2e": "apps/e2e/container-e2e",
     "data-access": "libs/scribe/data-access",
+    "feature-editor": "libs/scribe/feature-editor",
     "feature-files": "libs/scribe/feature-files",
     "feature-layout": "libs/container/feature-layout",
     "shared-data-access": "libs/shared/data-access"

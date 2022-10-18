@@ -1,2 +1,39 @@
 @import "libs/shared/scss/theme/shared-theme";
 @import "libs/shared/scss/shared-core";
+
+
+.ql-toolbar .ql-stroke {
+  fill: none;
+  stroke: var(--text);
+}
+
+.ql-toolbar .ql-fill {
+  fill: var(--text);
+  stroke: none;
+}
+
+.ql-toolbar .ql-picker {
+  color: var(--text);
+}
+
+.ql-editor.ql-blank::before {
+  color: var(--text)
+}
+
+.ql-container.ql-snow {
+  margin-top: 1rem;
+  height: 100%;
+  width: 75%;
+  border: 2px solid var(--border);
+  background: var(--containerBg);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  border-top: 2px solid var(--border);
+}
+
+.ql-snow.ql-toolbar:after, .ql-snow .ql-toolbar:after {
+  content: none;
+}

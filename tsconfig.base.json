@@ -20,6 +20,9 @@
         "libs/container/feature-layout/src/index.ts"
       ],
       "@ng-scribe/scribe/data-access": ["libs/scribe/data-access/src/index.ts"],
+      "@ng-scribe/scribe/feature-editor": [
+        "libs/scribe/feature-editor/src/index.ts"
+      ],
       "@ng-scribe/scribe/feature-files": [
         "libs/scribe/feature-files/src/index.ts"
       ],

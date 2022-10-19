@@ -21,15 +21,26 @@
           </button>
           <mat-menu #menu xPosition="before">
             <button mat-menu-item>Edit chapter details</button>
-            <button mat-menu-item (click)="createScene(chapter)">New Scene</button>
+            <button mat-menu-item (click)="openSceneDialog(chapter)">New Scene</button>
           </mat-menu>
         </div>
       </div>
       <ng-container *ngIf="chapter.isExpanded">
         <ng-container *ngFor="let scene of chapter.scenes">
           <a class="scene" (click)="routeToScene($event, scene, chapter)">
-            <mat-icon class="icon-md" color="accent">insert_drive_file</mat-icon>
-            <h5 class="m-0">{{scene.title}}</h5>
+            <div class="flex-start">
+              <mat-icon class="icon-md" color="accent">insert_drive_file</mat-icon>
+              <h5 class="m-0">{{scene.title}}</h5>
+            </div>
+            <div class="flex-end">
+              <button
+                class="icon-button-sm flex-center"
+                mat-icon-button
+                (click)="openDeleteConfirmDialog($event, scene, chapter)"
+              >
+                <mat-icon class="icon-sm" color="warn">clear</mat-icon>
+              </button>
+            </div>
           </a>
         </ng-container>
       </ng-container>

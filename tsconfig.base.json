@@ -26,7 +26,8 @@
       "@ng-scribe/scribe/feature-files": [
         "libs/scribe/feature-files/src/index.ts"
       ],
-      "@ng-scribe/shared/data-access": ["libs/shared/data-access/src/index.ts"]
+      "@ng-scribe/shared/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@ng-scribe/shared/feature-ui": ["libs/shared/feature-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

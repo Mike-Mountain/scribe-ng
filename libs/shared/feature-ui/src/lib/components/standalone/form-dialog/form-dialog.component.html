@@ -1,0 +1,15 @@
+<section class="form-dialog">
+  <h1 class="text-center">{{data.formTitle}}</h1>
+  <form class="form-dialog-form" [formGroup]="formGroup">
+    <ng-container *ngFor="let control of formControls">
+      <mat-form-field appearance="outline" class="my-2 w-80">
+        <mat-label>{{control}}</mat-label>
+        <input matInput [formControlName]="control">
+      </mat-form-field>
+    </ng-container>
+    <div class="w-100 flex-around" *ngIf="data.okayButton || data.cancelButton">
+      <button mat-raised-button color="warn" *ngIf="data.cancelButton" (click)="closeDialog(false)">Cancel</button>
+      <button mat-raised-button color="primary" class="text-white" *ngIf="data.okayButton" (click)="closeDialog(true)">Submit</button>
+    </div>
+  </form>
+</section>

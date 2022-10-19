@@ -1,6 +1,6 @@
 <div class="content-tabs toolbar">
   <ng-container *ngFor="let tab of tabs">
-    <a class="content-tab" [class.is-active]="tab.isActive" [routerLink]="'manuscript/' + tab.path">
+    <a class="content-tab" [class.is-active]="tab.isActive" (click)="routeToTab(tab)">
       <mat-icon class="icon-md" color="primary">{{tab.icon}}</mat-icon>
       <p class="mb-0 mx-1">{{tab.title}}</p>
       <button class="icon-button-sm flex-center" mat-icon-button (click)="removeTab($event, tab)">

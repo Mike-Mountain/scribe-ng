@@ -8,18 +8,20 @@ import {MatButtonModule} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from "@angular/material/menu";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        RouterLink,
-        MatIconModule,
-        MatMenuModule,
-    ],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    RouterLink,
+    MatIconModule,
+    MatMenuModule,
+    MatDialogModule
+  ],
   declarations: [
     ManuscriptDetailsComponent,
     FileTreeComponent,

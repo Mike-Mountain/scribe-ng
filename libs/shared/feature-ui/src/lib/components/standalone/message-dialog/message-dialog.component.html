@@ -1,0 +1,9 @@
+<h1 class="text-center m-0">{{data.title}}</h1>
+<div class="w-100 flex-center my-3">
+  <mat-icon [color]="'accent'" class="icon-xl">{{data.icon}}</mat-icon>
+</div>
+<p class="text-center my-2">{{data.message}}</p>
+<div class="w-60 mx-auto flex-around">
+  <button mat-raised-button color="warn" *ngIf="data.buttons.cancel" (click)="closeDialog(false)">{{data.buttons.cancelText}}</button>
+  <button mat-raised-button color="accent" *ngIf="data.buttons.action" (click)="closeDialog(true)">{{data.buttons.actionText}}</button>
+</div>

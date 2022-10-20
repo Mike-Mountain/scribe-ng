@@ -11,29 +11,13 @@
         </button>
       </div>
       <aside class="content-left" aria-label="content-left" *ngIf="layout.contentLeft === 'open'">
-        <div class="toolbar flex-between pl-2">
-          <p class="m-0">Manuscript</p>
-          <div class="actions">
-            <button class="icon-button-sm flex-center" mat-icon-button [matMenuTriggerFor]="menu">
-              <mat-icon class="icon-sm">more_vert</mat-icon>
-            </button>
-            <button class="icon-button-sm flex-center" mat-icon-button (click)="togglePanel('contentLeft')">
-              <mat-icon class="icon-sm">remove</mat-icon>
-            </button>
-          </div>
-          <mat-menu #menu>
-            <button mat-menu-item>Manuscript details</button>
-            <button mat-menu-item (click)="createChapter()">New Chapter</button>
-            <button mat-menu-item (click)="createScene()">New Scene</button>
-          </mat-menu>
-        </div>
         <ng-scribe-file-tree></ng-scribe-file-tree>
       </aside>
       <div class="content-main">
         <ng-container *ngIf="tabs$ | async as tabs">
           <ng-scribe-tabs
             *ngIf="tabs.length > 0"
-            [tabs]="tabs"
+            [tabs]="tabs$"
           ></ng-scribe-tabs>
         </ng-container>
         <main>

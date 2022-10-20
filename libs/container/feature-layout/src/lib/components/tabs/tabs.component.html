@@ -1,4 +1,4 @@
-<div class="content-tabs toolbar">
+<div class="content-tabs toolbar" *ngIf="tabs | async as tabs">
   <ng-container *ngFor="let tab of tabs">
     <a class="content-tab" [class.is-active]="tab.isActive" (click)="routeToTab(tab)">
       <mat-icon class="icon-md" color="primary">{{tab.icon}}</mat-icon>

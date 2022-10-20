@@ -47,14 +47,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     if (!this.scribeQuery.getHasCache()) {
       this.scribeService.getScribeData().subscribe();
     }
-    this.scribeData$ = this.scribeQuery.select().pipe(
-      tap(data => {
-        // Open the manuscript by default if one exists
-        if (data.manuscript) {
-          this.layoutService.togglePanel('contentLeft');
-        }
-      })
-    );
+    this.scribeData$ = this.scribeQuery.select();
   }
 
   ngOnDestroy() {
@@ -64,13 +57,5 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   togglePanel(panel: string) {
     this.layoutService.togglePanel(panel);
-  }
-
-  createChapter() {
-
-  }
-
-  createScene() {
-
   }
 }

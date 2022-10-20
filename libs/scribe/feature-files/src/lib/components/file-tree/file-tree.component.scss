@@ -20,3 +20,18 @@
     background: var(--containerBg);
   }
 }
+
+.toolbar {
+  width: 100%;
+  height: 2rem;
+  background: var(--containerBg);
+  border-bottom: 1px solid var(--border);
+}
+
+.actions {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid var(--border)
+}

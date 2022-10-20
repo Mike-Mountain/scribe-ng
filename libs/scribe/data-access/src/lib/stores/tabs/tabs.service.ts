@@ -21,18 +21,12 @@ export class TabsService {
     return of(tabs);
   }
 
-  removeTab(selectedTab: Tab) {
+  removeTab(selectedTab: Tab): Observable<Tab[]> {
     const tabs: Tab[] = JSON.parse(JSON.stringify(this.tabsStore.getValue()));
     const tabId = tabs.findIndex(tab => tab.title === selectedTab.title);
     tabs.splice(tabId, 1);
     this.tabsStore._setState(tabs);
-    if (selectedTab.isActive) {
-      if (tabs.length > 0) {
-        this.router.navigateByUrl(`manuscript/${tabs[0].path}`).then(() => tabs[0].isActive = true);
-      } else {
-        this.router.navigateByUrl('/');
-      }
-    }
+    return of(tabs);
   }
 
 }

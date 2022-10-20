@@ -38,8 +38,8 @@ export class FileTreeService {
     }
   }
 
-  openSceneDialog(): Observable<{ submitted: boolean, data: Pick<Scene, 'title'> }> {
-    const data: FormDialogData<Pick<Scene, 'title'>> = {
+  openCreateDialog<T extends Scene | Chapter>(): Observable<{ submitted: boolean, data: Pick<T, 'title'> }> {
+    const data: FormDialogData<Pick<T, 'title'>> = {
       cancelButton: true,
       okayButton: true,
       formTitle: 'Create Scene',
@@ -50,11 +50,11 @@ export class FileTreeService {
     return this.dialog.open(FormDialogComponent, {data, width: '500px'}).afterClosed()
   }
 
-  openConfirmDeleteDialog(): Observable<boolean> {
+  openConfirmDeleteDialog(type: 'chapter' | 'scene'): Observable<boolean> {
     const data: MessageDialogData = {
       icon: 'info',
       title: 'Delete',
-      message: 'Are you sure you want to delete this scene?',
+      message: `Are you sure you want to delete this ${type}?`,
       buttons: {
         cancel: true,
         cancelText: 'No',
@@ -62,7 +62,25 @@ export class FileTreeService {
         actionText: 'Yes'
       }
     }
+    if (type === 'chapter') {
+      data.message += ' Note that any scenes belonging to this chapter will be deleted as well.'
+    }
     return this.dialog.open(MessageDialogComponent, {data, width: '500px'}).afterClosed()
+  }
+
+  createChapter(chapterTitle: string, manuscript: Manuscript): Observable<Manuscript | undefined> {
+    const chapter: Chapter = {
+      title: chapterTitle,
+      scenes: [],
+      notes: [],
+      isExpanded: true
+    };
+    if (!manuscript.chapters.find(item => item.title === chapter.title)) {
+      manuscript.chapters.push(chapter);
+      return this.scribeService.update('manuscript', manuscript).pipe(map(state => state.manuscript));
+    } else {
+      throw new Error('Chapter name must be unique!')
+    }
   }
 
   createScene(chapter: Chapter, sceneTitle: string, manuscript: Manuscript): Observable<Manuscript | undefined> {
@@ -82,5 +100,10 @@ export class FileTreeService {
   deleteScene(scene: Scene, chapter: Chapter, manuscript: Manuscript): Observable<Manuscript | undefined> {
     chapter.scenes = chapter.scenes.filter(item => item.title !== scene.title);
     return this.scribeService.update('manuscript', manuscript).pipe(map(state => state.manuscript));
+  }
+
+  deleteChapter(chapter: Chapter, manuscript: Manuscript): Observable<Manuscript | undefined> {
+    manuscript.chapters = manuscript.chapters.filter(item => item.title !== chapter.title);
+    return this.scribeService.update('manuscript', manuscript.chapters, 'chapters').pipe(map(state => state.manuscript));
   }
 }

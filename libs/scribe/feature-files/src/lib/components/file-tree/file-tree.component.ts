@@ -64,25 +64,39 @@ export class FileTreeComponent implements OnInit, OnDestroy {
       .subscribe((tab) => this.router.navigate([`manuscript/${tab.path}`]));
   }
 
-  public openSceneDialog(chapter: Chapter): void {
-    this.fileTreeService.openSceneDialog()
+  public openCreateDialog(type: 'chapter' | 'scene', chapter?: Chapter): void {
+    this.fileTreeService.openCreateDialog()
       .pipe(takeUntil(this.$destroyed))
       .subscribe((data: { submitted: boolean, data: Pick<Scene, 'title'> }) => {
         if (data.submitted) {
-          this.createScene(chapter, data.data.title)
+          type === 'chapter'
+            ? this.createChapter(data.data.title)
+            : this.createScene(chapter!, data.data.title)
         }
       });
   }
 
-  public openDeleteConfirmDialog(event: MouseEvent, scene: Scene, chapter: Chapter): void {
+  public openDeleteConfirmDialog(event: MouseEvent, type: 'chapter' | 'scene', scene?: Scene, chapter?: Chapter): void {
     event.stopImmediatePropagation();
-    this.fileTreeService.openConfirmDeleteDialog()
+    this.fileTreeService.openConfirmDeleteDialog(type)
       .pipe(takeUntil(this.$destroyed))
       .subscribe((confirmed: boolean) => {
         if (confirmed) {
-          this.deleteScene(scene, chapter)
+          if (scene && chapter && type === 'scene') {
+            this.deleteScene(scene, chapter);
+          } else if (chapter && type === 'chapter' ) {
+            this.deleteChapter(chapter)
+          }
         }
       });
+  }
+
+  private createChapter(chapterTitle: string) {
+    if (this.manuscript) {
+      this.fileTreeService.createChapter(chapterTitle, this.manuscript)
+        .pipe(takeUntil(this.$destroyed))
+        .subscribe((manuscript) => console.log('Manuscript updated:', manuscript))
+    }
   }
 
   private createScene(chapter: Chapter, sceneTitle: string): void {
@@ -98,6 +112,14 @@ export class FileTreeComponent implements OnInit, OnDestroy {
       this.fileTreeService.deleteScene(scene, chapter, this.manuscript)
         .pipe(takeUntil(this.$destroyed))
         .subscribe((manuscript) => console.log('Scene deleted:', manuscript))
+    }
+  }
+
+  private deleteChapter(chapter: Chapter) {
+    if (this.manuscript) {
+      this.fileTreeService.deleteChapter(chapter, this.manuscript)
+        .pipe(takeUntil(this.$destroyed))
+        .subscribe((manuscript) => console.log('Chapter deleted:', manuscript))
     }
   }
 }

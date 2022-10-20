@@ -23,9 +23,14 @@ export class ScribeService {
     );
   }
 
-  update(key: string, updateBody: any): Observable<ScribeState> {
+  update(key: string, updateBody: any, nestedKey?: string): Observable<ScribeState> {
     const data: ScribeState = JSON.parse(JSON.stringify(this.scribeStore.getValue()));
-    data[key as keyof ScribeState] = updateBody;
+    if (!nestedKey) {
+      data[key as keyof ScribeState] = updateBody;
+    } else {
+      // @ts-ignore
+      data[key as keyof ScribeState][nestedKey] = updateBody
+    }
     return this.localStorageService.setScribeData(data).pipe(
       tap(data => this.scribeStore.update(data))
     )

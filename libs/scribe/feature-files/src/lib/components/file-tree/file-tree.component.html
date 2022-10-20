@@ -10,8 +10,7 @@
   </div>
   <mat-menu #menu>
     <button mat-menu-item>Manuscript details</button>
-    <button mat-menu-item>New Chapter</button>
-    <button mat-menu-item>New Scene</button>
+    <button mat-menu-item (click)="openCreateDialog('chapter')">New Chapter</button>
   </mat-menu>
 </div>
 <ng-container *ngIf="files$ | async as chapters">
@@ -36,9 +35,16 @@
             <mat-icon class="icon-sm">more_vert</mat-icon>
           </button>
           <mat-menu #menu xPosition="before">
-            <button mat-menu-item>Edit chapter details</button>
-            <button mat-menu-item (click)="openSceneDialog(chapter)">New Scene</button>
+            <button mat-menu-item>Chapter details</button>
+            <button mat-menu-item (click)="openCreateDialog('scene', chapter)">New scene</button>
           </mat-menu>
+          <button
+            class="icon-button-sm flex-center"
+            mat-icon-button
+            (click)="openDeleteConfirmDialog($event, 'chapter', undefined, chapter)"
+          >
+            <mat-icon class="icon-sm" color="warn">clear</mat-icon>
+          </button>
         </div>
       </div>
       <ng-container *ngIf="chapter.isExpanded">
@@ -52,7 +58,7 @@
               <button
                 class="icon-button-sm flex-center"
                 mat-icon-button
-                (click)="openDeleteConfirmDialog($event, scene, chapter)"
+                (click)="openDeleteConfirmDialog($event, 'scene', scene, chapter)"
               >
                 <mat-icon class="icon-sm" color="warn">clear</mat-icon>
               </button>
